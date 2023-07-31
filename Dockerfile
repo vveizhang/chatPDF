@@ -9,7 +9,7 @@ WORKDIR /streamlit-chatPDF-app
 
 # install c++
 RUN apt-get update
-RUN apt-get -qq -y install gcc-c++
+RUN apt install build-essential
 
 # copy over requirements
 COPY requirements.txt ./requirements.txt
