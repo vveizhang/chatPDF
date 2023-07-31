@@ -1,5 +1,5 @@
 # base image
-FROM python:3.9.17-slim-bullseye
+FROM python:3.10.12-slim-bookworm
 
 # exposing default port for streamlit
 EXPOSE 8501
@@ -9,8 +9,8 @@ WORKDIR /streamlit-chatPDF-app
 
 # install c++
 RUN apt-get update
-RUN apt-get install build-essential
-RUN apt-get -qq -y install gcc
+RUN apt-get -y install build-essential
+#RUN apt-get -qq -y install gcc
 
 # copy over requirements
 COPY requirements.txt ./requirements.txt
