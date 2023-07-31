@@ -2,6 +2,7 @@ PyMuPDF
 Chroma
 chromadb
 streamlit
+tiktoken
 aiohttp
 aiosignal
 altair
