@@ -7,6 +7,10 @@ EXPOSE 8501
 # making directory of app
 WORKDIR /streamlit-chatPDF-app
 
+# install c++
+RUN apt-get update
+RUN apt-get -qq -y install gcc-c++
+
 # copy over requirements
 COPY requirements.txt ./requirements.txt
 
@@ -15,10 +19,6 @@ RUN pip3 install -r requirements.txt
 
 # copying all files over
 COPY . .
-
-# download model file
-RUN apt-get update
-RUN apt-get -qq -y install gcc-c++
 
 # cmd to launch app when container is run
 CMD streamlit run ./src/app.py
