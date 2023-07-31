@@ -18,7 +18,7 @@ COPY . .
 
 # download model file
 RUN apt-get update
-RUN apt-get  -qq -y install wget
+RUN apt-get -qq -y install RUN apt-get 
 
 # cmd to launch app when container is run
 CMD streamlit run ./src/app.py
