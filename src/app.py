@@ -28,17 +28,14 @@ def load_pdf(pdf_path):
 st.title("PDF Chatbot")
 
 with st.container():
-    uploaded_files = st.file_uploader("Upload your PDF files", type="pdf", accept_multiple_files=True)
-    if uploaded_files is not None:
-        paths = []
-        docs = []
-        for file in uploaded_files:
-            path  = os.path.join('.', file.name)
-            paths.append(path)
-            with open(path, 'wb') as f:
-                f.write(file.getbuffer())
-                doc = load_pdf(path)
-                docs.extend(doc)
+    uploaded_file = st.file_uploader("Upload your PDF file", type="pdf")
+    if uploaded_file is not None:
+
+        path  = os.path.join('.', uploaded_file.name)
+        with open(path, 'wb') as f:
+            f.write(uploaded_file.getbuffer())
+
+        docs = load_pdf(path)
         
         text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
         split_docs = text_splitter.split_documents(docs)
