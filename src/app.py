@@ -19,11 +19,7 @@ llm = OpenAI(temperature=0, openai_api_key=OPENAI_API_KEY)
 chain = load_qa_chain(llm, chain_type="refine")
 
 vectorstore = None
-# Load the vectorstore from disk
-#vectordb = Chroma(collection_name=collection_name, persist_directory=persist_directory, embedding_function=embeddings)
 
-# def load_pdf(pdf_path):
-#   return PyMuPDFLoader(pdf_path).load()
 
 def main():
     # 配置界面
@@ -31,8 +27,8 @@ def main():
                        page_icon=":robot:")
 
     st.header("LangChain pdf QA ChatBot")
+    st.markdown('The source code for this app can be found in this GitHub repo: [https://github.com/vveizhang/chatPDF](https://github.com/vveizhang/chatPDF).')
 
-    # 参考官网链接：https://github.com/hwchase17/langchain-streamlit-template/blob/master/main.py
     # 初始化
     # session_state是Streamlit提供的用于存储会话状态的功能
     if "conversation" not in st.session_state:
@@ -47,12 +43,8 @@ def main():
         if not uploaded_files:
             vectorstore = None
             st.write("Please upload your PDF files")
-            # loader = PyMuPDFLoader("blank.pdf")
-            # pages = loader.load_and_split()
-            # vectorstore = Chroma.from_documents(pages, embeddings, collection_name=collection_name, persist_directory=persist_directory)
-            # vectorstore.persist()
 
-        else:#if uploaded_files is not None:
+        else:
             paths = []
             docs = []
             for file in uploaded_files:
